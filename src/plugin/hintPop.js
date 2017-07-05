@@ -1,19 +1,17 @@
 export default (function () {
     var isMoile = (function() {
-        var sUserAgent = navigator.userAgent.toLowerCase();
-        var bIsIpad = sUserAgent.match(/ipad/i) == "ipad";
-        var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
-        var bIsMidp = sUserAgent.match(/midp/i) == "midp";
-        var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4";
-        var bIsUc = sUserAgent.match(/ucweb/i) == "ucweb";
-        var bIsAndroid = sUserAgent.match(/android/i) == "android";
-        var bIsCE = sUserAgent.match(/windows ce/i) == "windows ce";
-        var bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile";
+        var sUserAgent = navigator.userAgent.toLowerCase()
+            ,bIsIpad = sUserAgent.match(/ipad/i) == "ipad"
+            ,bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os"
+            ,bIsMidp = sUserAgent.match(/midp/i) == "midp"
+            ,bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4"
+            ,bIsUc = sUserAgent.match(/ucweb/i) == "ucweb"
+            ,bIsAndroid = sUserAgent.match(/android/i) == "android"
+            ,bIsCE = sUserAgent.match(/windows ce/i) == "windows ce"
+            ,bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile";
         if (bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM) {
             return true;
-        } else {
-            return false;
-        }
+        } return false;
     })(); 
     function $$(id){
         return document.getElementById(id);
@@ -38,15 +36,13 @@ export default (function () {
         };
         var btnHtml = '';
         if(dftOpt.use_a){
-            btnHtml += 
-                '<a href="'+dftOpt.url+'" id="_confirm" class="_confirm _btn" target="'+dftOpt.target+'">确定</a>'
-                    +'<i class="line"></i>'
-                +'<a href="javascript:;" id="_cancel" class="_cancel _btn">取消</a>';
+            btnHtml += '<a href="'+dftOpt.url+'" id="_confirm" class="_confirm _btn" target="'+dftOpt.target+'">确定</a>'
+                        +'<i class="line"></i>'
+                    +'<a href="javascript:;" id="_cancel" class="_cancel _btn">取消</a>';
         }else{
-            btnHtml += 
-                '<span id="_confirm" class="_confirm _btn" ">确定</span>'
-                    +'<i class="line"></i>'
-                +'<span id="_cancel" class="_cancel _btn">取消</span>';
+            btnHtml += '<span id="_confirm" class="_confirm _btn" ">确定</span>'
+                        +'<i class="line"></i>'
+                    +'<span id="_cancel" class="_cancel _btn">取消</span>';
         }
         var popCon ='<div class="_pop">'
                         +'<div class="_pop-top">'
@@ -131,10 +127,8 @@ export default (function () {
             div.innerHTML = hintCon;
             document.body.appendChild(div);
         }
-        clearTimeout(timer);
-        clearTimeout(timerC);
-        timer = null;
-        timerC = null;
+        clearTimeout(timer); clearTimeout(timerC);
+        timer = null; timerC = null;
         timer = setTimeout(function(){//显示1s后消失
             $$("hintBox").className = "_hintBox hide";
             timerC = setTimeout(function(){$$("hintBox").style.display = "none";}, 300);
