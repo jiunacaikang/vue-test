@@ -12,11 +12,11 @@ export default {
   components:{tabBar},
   mounted () {
     //console.log(this.$router.params)
+    this.hintPop.pop();
   },
   data () {
     return {
-      tabHide:false,
-      hideTab:['/hello','/hello2']
+  
     }
   },
   methods:{

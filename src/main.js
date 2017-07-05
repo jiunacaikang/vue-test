@@ -4,6 +4,8 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import './common/rem.js'
+import hintPop from "./plugin/hintPop";
+Vue.prototype.hintPop = hintPop;
 router.beforeEach((to, from, next) => {
     document.title = to.meta.pageTitle
     next()
