@@ -16,22 +16,21 @@ export default (function () {
     function $$(id){
         return document.getElementById(id);
     };
-    var dftOpt= {};
-    var timer = null,timerC = null;
+    var dftOpt = {},timer = null,timerC = null;
     function showPop(opt){
         dftOpt = {
             title:opt&&opt.title||"操作提示",           //弹框 title
             content:opt&&opt.content||"显示hintPop弹框",//弹框 内容
             activebg:opt&&opt.activebg||"#dedede",      //弹框 确定/取消 背景active颜色
             bg:opt&&opt.bg||"rgba(255,255,255,0.9)",    //弹框 确定/取消 背景颜色
-            use_a:false,                                //弹框 按钮是否使用a标签
+            use_a:opt&&opt.use_a||false,                //弹框 按钮是否使用a标签
             url:opt&&opt.url|| "javascript:;",          //弹框 点击确定 链接跳转
             target:opt&&opt.target||"_self",            //弹框 连接跳转方式
             confirm:opt&&opt.confirm||function(){       //弹框 点击确认回调函数
                 showHint("您点击了confirm");
             },
             cancel:opt&&opt.cancel||function(){         //弹框 点击取消回调函数 
-                showHint("您点击了confirm");
+                showHint("您点击了cancel");
             }
         };
         var btnHtml = '';
@@ -61,26 +60,36 @@ export default (function () {
             var div = document.createElement("div");
             div.setAttribute("id", "popBox");
             div.setAttribute("class", "_popBox");
+            div.setAttribute("useable", true);
             div.innerHTML = popCon;
             document.body.appendChild(div);
         }
         bindClick(dftOpt);
     };
     function popHide(event){
-        if(event.target.id==="_confirm"){
-            if(typeof(dftOpt.confirm)=="function"){
-                dftOpt.confirm();
+        var useable = $$("popBox").getAttribute("useable");
+        if(useable === "true"){
+            console.log(useable)
+            $$("popBox").setAttribute("useable", false);
+            if(event.target.id==="_confirm"){
+                if(typeof(dftOpt.confirm)=="function"){
+                    dftOpt.confirm();
+                }
+            }else if(event.target.id==="_cancel"){
+                if(typeof(dftOpt.cancel)=="function"){
+                    dftOpt.cancel();
+                }
+            }else{
+                $$("popBox").setAttribute("useable", true);
+                return false;
             }
-        }else if(event.target.id==="_cancel"){
-            if(typeof(dftOpt.cancel)=="function"){
-                dftOpt.cancel();
-            }
-        }else{
-            return false;
+            $$("popBox").className += " hide";
+            setTimeout(function(){
+                $$("popBox").style.display = 'none';
+                $$("popBox").setAttribute("useable", true)
+            }, 300);
+            event.target.style.backgroundColor = dftOpt.bg;
         }
-        $$("popBox").className += " hide";
-        setTimeout(function(){$$("popBox").style.display = 'none'}, 300);
-        event.target.style.backgroundColor = dftOpt.bg;
     };
     function bindClick(opt){  
         if(isMoile){
@@ -111,9 +120,6 @@ export default (function () {
             });
         }
     };
-    function popFn(opt){
-        showPop(opt);
-    };
     function showHint(str){
         var hintCon = '<div class="_hint">'+(str||"hint show~")+'</div>';
         if($$("hintBox")){
@@ -134,11 +140,8 @@ export default (function () {
             timerC = setTimeout(function(){$$("hintBox").style.display = "none";}, 300);
         }, 1000);
     };
-    function hintFn(str){
-        showHint(str);
-    };
     return {
-        hint : hintFn, //hint方法
-        pop : popFn   //pop方法
+        hint : showHint, //hint方法
+        pop : showPop    //pop方法
     };
 })();
