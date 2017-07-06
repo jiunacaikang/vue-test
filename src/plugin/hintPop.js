@@ -64,6 +64,9 @@ export default (function () {
             div.innerHTML = popCon;
             document.body.appendChild(div);
         }
+        window.onhashchange = function(){
+            $$("popBox").style.display = 'none';
+        };
         bindClick(dftOpt);
     };
     function popHide(event){
