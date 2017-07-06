@@ -10,9 +10,6 @@
 export default {
   name: 'hello',
   mounted () {
-    // var t = Boolean(this.$route.query.hideBar);
-    // console.log(t)
-   this.$emit("hideBar",true);
   },
   data () {
     return {

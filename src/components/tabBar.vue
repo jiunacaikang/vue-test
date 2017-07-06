@@ -11,8 +11,6 @@ export default {
   mounted () {
     // var t = Boolean(this.$route.query.hideBar);
     // console.log(t)
-   console.log('010');
-   this.$emit("hideBar",0);
   },
   data () {
     return {
@@ -31,7 +29,6 @@ export default {
   },
   methods: {
     tab:function(i){
-        this.$emit("taba",i);
     }
   }
 }

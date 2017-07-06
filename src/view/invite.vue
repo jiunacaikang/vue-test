@@ -11,8 +11,6 @@
 export default {
   name: 'invite',
   mounted () {
-    var t = Boolean(this.$route.query.hideBar);
-    console.log(t)
   },
   data () {
     return {
