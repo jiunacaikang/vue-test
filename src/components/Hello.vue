@@ -41,22 +41,4 @@ export default {
   margin:10px auto;
   line-height: .7rem;
 }
-*{margin:0;padding:0;list-style: none;}
-h1, h2 {
-  font-weight: normal;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
-}
 </style>

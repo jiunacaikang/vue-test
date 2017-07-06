@@ -53,7 +53,7 @@ export default {
   height: 3.4rem;
   border-radius: 50%;
   border:.2rem solid #f2414f;
-  margin: 0.2rem auto 0
+  margin: 0.2rem auto 0;
 }
 .tap{
   font-size:.24rem;
@@ -108,5 +108,8 @@ a.main-button{
 }
 .protect{
   margin-top: .4rem;
+}
+.redC {
+  color:#f2414f;
 }
 </style>

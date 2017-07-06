@@ -25,10 +25,12 @@ export default {
 @import '../style/mixin.scss';
 .toHello a{
   @include wh(1rem,.6rem);
+  @include borderRadius(5px);
   display: block;
   border:1px solid $blue;
   margin:0 auto;
   margin-top:1rem;
   color:red;
+  line-height: .55rem;
 }
 </style>
