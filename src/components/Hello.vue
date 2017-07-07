@@ -3,6 +3,7 @@
     {{msg}}
     <div class="ts" @click="showHint">show hint</div>
     <div class="ts" @click="showPop">show pop</div>
+    <div class="ts" @click="login">立即登录</div>
   </div>
 </template>
 
@@ -10,7 +11,6 @@
 export default {
   name: 'hello',
   mounted () {
-    this.msg = this.$route.query.unlogin?this.$route.query.unlogin:this.msg
   },
   data () {
     return {
@@ -24,6 +24,20 @@ export default {
     },
     showPop:function(){
       this.hintPop.pop()
+    },
+    login:function(){
+      let that = this;
+      this.hintPop.pop({
+        content:"现在登录？",
+        confirm:function(){       //弹框 点击确认回调函数
+          that.hintPop.hint("已登录");
+          localStorage.username = true;
+          that.$router.push('/')
+        },
+        cancel:function(){        //弹框 点击取消回调函数 
+          that.hintPop.hint("未登录");
+        }
+      })
     }
   }
 }
@@ -34,11 +48,11 @@ export default {
 @import "../style/mixin.scss";
 .ts{
   color: $blue;
-  border:1px solid pink;
+  border:1px solid $blue;
   @include wh(30%, .8rem);
   @include borderRadius(5px);
-  @include hb-t(pink);
-  @include hb-b(pink);
+  @include hb-t($blue);
+  @include hb-b($blue);
   margin:10px auto;
   line-height: .7rem;
 }
