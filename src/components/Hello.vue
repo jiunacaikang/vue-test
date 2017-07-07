@@ -10,6 +10,7 @@
 export default {
   name: 'hello',
   mounted () {
+    this.msg = this.$route.query.unlogin?this.$route.query.unlogin:this.msg
   },
   data () {
     return {

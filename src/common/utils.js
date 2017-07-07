@@ -1,5 +1,3 @@
-import api from "../config/api";
-import axios from 'axios';
 export default {
 	isMoile:function() {
         var sUserAgent = navigator.userAgent.toLowerCase(),

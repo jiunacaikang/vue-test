@@ -7,10 +7,6 @@ import './common/rem.js'
 import hintPop from "./plugin/hintPop";
 Vue.prototype.hintPop = hintPop;
 
-router.beforeEach((to, from, next) => {
-    document.title = to.meta.pageTitle
-    next()
-})
 Vue.config.productionTip = false
 /* eslint-disable no-new */
 new Vue({

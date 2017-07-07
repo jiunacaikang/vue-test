@@ -8,9 +8,13 @@
 </template>
 
 <script>
+import http from "@/common/http";
 export default {
   name: 'invite',
   mounted () {
+    http.getMock('mock/db.json').then(function(res){
+      console.log(res.data);
+    });
   },
   data () {
     return {
