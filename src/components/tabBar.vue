@@ -35,24 +35,26 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style scoped lang='scss'>
+@import "../style/mixin.scss";
 .nav-bar{
   width:7.5rem;
   position: fixed;
   bottom: 0;
 }
 .nav-bar a{
+  @include hb-t(#ddd);
   width: 33.33%;
   height:1rem;
   float: left;
   background: #f8f8f8;
   color: #666;
   line-height: 1rem;
-  border-top:2px solid #ddd;
+  /* border-top:2px solid #ddd; */
   display: block;
 }
 .nav-bar .router-link-active{
-  border-top-color: #f2414f;
+  @include hb-t($red);
   color: #f2414f;
 }
 </style>

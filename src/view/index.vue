@@ -15,7 +15,7 @@
           <li>起投金额<i class="redC">100元</i></li>
           <li>计息<i class="redC">T+1</i></li>
         </ul>
-        <a href="javascript:;" class="main-button">立即投资</a>
+        <a @click="invite" class="main-button">立即投资</a>
         <p class="protect">账户资金安全由新浪支付和永安保险保障</p>
       </div> 
     </div>
@@ -29,13 +29,20 @@ export default {
     return {
       msg: 'Welcome to Your Vue.js App'
     }
+  },
+  methods:{
+    invite () {
+      this.hintPop.pop({
+        content:"不可投资！"
+      })
+    }
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-
+<style scoped lang='scss'>
+@import '../style/mixin.scss';
 .title{
   width:3rem;
   height: 2rem;
