@@ -1,11 +1,14 @@
 import utils from "../common/utils"
 console.log(utils.arrUnique([1,2,"33",2,"2","2",2]))
 export default (function () {
-    var isMoile = utils.isMoile();
+    var dftOpt = {},timer = null,timerC = null,isMoile = utils.isMoile();
+    window.onresize = function(){
+        isMoile = utils.isMoile();
+        bindClick(dftOpt);
+    }
     function $$(id){
         return document.getElementById(id);
     };
-    var dftOpt = {},timer = null,timerC = null;
     function showPop(opt){
         dftOpt = {
             title:opt&&opt.title||"操作提示",           //弹框 title
@@ -25,11 +28,9 @@ export default (function () {
         var btnHtml = '';
         if(dftOpt.use_a){
             btnHtml += '<a href="'+dftOpt.url+'" id="_confirm" class="_confirm _btn" target="'+dftOpt.target+'">确定</a>'
-                        +'<i class="line"></i>'
                     +'<a href="javascript:;" id="_cancel" class="_cancel _btn">取消</a>';
         }else{
             btnHtml += '<span id="_confirm" class="_confirm _btn" ">确定</span>'
-                        +'<i class="line"></i>'
                     +'<span id="_cancel" class="_cancel _btn">取消</span>';
         }
         var popCon ='<div class="_pop">'
@@ -61,7 +62,6 @@ export default (function () {
     function popHide(event){
         var useable = $$("popBox").getAttribute("useable");
         if(useable === "true"){
-            console.log(useable)
             $$("popBox").setAttribute("useable", false);
             if(event.target.id==="_confirm"){
                 if(typeof(dftOpt.confirm)=="function"){
@@ -132,6 +132,7 @@ export default (function () {
             timerC = setTimeout(function(){$$("hintBox").style.display = "none";}, 300);
         }, 1000);
     };
+    
     return {
         hint : showHint, //hint方法
         pop : showPop    //pop方法
