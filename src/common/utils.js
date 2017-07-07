@@ -10,7 +10,7 @@ export default {
         	bIsUc = sUserAgent.match(/ucweb/i) == "ucweb",
         	bIsAndroid = sUserAgent.match(/android/i) == "android",
         	bIsCE = sUserAgent.match(/windows ce/i) == "windows ce",
-        	bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile" ;
+        	bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile";
         if (bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM) {
             return true;
         } return false;
