@@ -1,6 +1,4 @@
 import api from "../config/api";
-console.log("---------------")
-console.log(api);
 import axios from 'axios';
 export default {
 	isMoile:function() {
