@@ -4,8 +4,11 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import './common/rem.js'
-import hintPop from "./plugin/hintPop";
+import hintPop from "./plugin/hintPop/index"
+import api from "./common/api"
+console.log(hintPop)
 Vue.prototype.hintPop = hintPop;
+Vue.prototype.API = api;
 
 Vue.config.productionTip = false
 /* eslint-disable no-new */

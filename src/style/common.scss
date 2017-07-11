@@ -1,4 +1,3 @@
-@import "../plugin/hintPop.scss";
 @charset "utf-8";
 /* 禁用iPhone中Safari的字号自动调整 */
 html {
@@ -42,4 +41,8 @@ ul,ol{list-style:none;}
 /* 清除浮动 */
 .clearfix:after{content:""; display:block; visibility:hidden; height:0; clear:both;}
 .clearfix{zoom:1;}
+.blur{
+	-webkit-filter: blur(5px); /* Chrome, Opera */
+            filter: blur(5px);
+}
 
