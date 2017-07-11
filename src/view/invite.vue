@@ -8,9 +8,15 @@
 </template>
 
 <script>
+import $http from "@/common/http";
 export default {
   name: 'invite',
   mounted () {
+    $http.get('mock/db.json',{"page":1}).then(function(res){
+      console.log(res)
+    }).catch(function(res){
+      console.log("error")
+    });
   },
   data () {
     return {

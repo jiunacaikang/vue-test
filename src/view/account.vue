@@ -26,7 +26,7 @@ export default {
   },
   methods:{
     submit () {
-      console.log(this.user)
+
     },
     reset () {
       this.user = {};

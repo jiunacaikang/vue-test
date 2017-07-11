@@ -1,22 +1,14 @@
+import './hintPop.scss'
+import utils from "@/common/utils"
 export default (function () {
-    var isMoile = (function() {
-        var sUserAgent = navigator.userAgent.toLowerCase()
-            ,bIsIpad = sUserAgent.match(/ipad/i) == "ipad"
-            ,bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os"
-            ,bIsMidp = sUserAgent.match(/midp/i) == "midp"
-            ,bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4"
-            ,bIsUc = sUserAgent.match(/ucweb/i) == "ucweb"
-            ,bIsAndroid = sUserAgent.match(/android/i) == "android"
-            ,bIsCE = sUserAgent.match(/windows ce/i) == "windows ce"
-            ,bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile";
-        if (bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM) {
-            return true;
-        } return false;
-    })(); 
+    var dftOpt = {},timer = null,timerC = null,timerL = null,isMoile = utils.isMoile();
+    window.onresize = function(){
+        isMoile = utils.isMoile();
+        bindClick(dftOpt);
+    }
     function $$(id){
         return document.getElementById(id);
     };
-    var dftOpt = {},timer = null,timerC = null;
     function showPop(opt){
         dftOpt = {
             title:opt&&opt.title||"操作提示",           //弹框 title
@@ -35,23 +27,18 @@ export default (function () {
         };
         var btnHtml = '';
         if(dftOpt.use_a){
-            btnHtml += '<a href="'+dftOpt.url+'" id="_confirm" class="_confirm _btn" target="'+dftOpt.target+'">确定</a>'
-                        +'<i class="line"></i>'
-                    +'<a href="javascript:;" id="_cancel" class="_cancel _btn">取消</a>';
+            btnHtml = `<a href="${dftOpt.url}" id="_confirm" class="_confirm _btn" target="${dftOpt.target}">确定</a>
+                       <a href="javascript:;" id="_cancel" class="_cancel _btn">取消</a>`;
         }else{
-            btnHtml += '<span id="_confirm" class="_confirm _btn" ">确定</span>'
-                        +'<i class="line"></i>'
-                    +'<span id="_cancel" class="_cancel _btn">取消</span>';
+            btnHtml = `<span id="_confirm" class="_confirm _btn">确定</span><span id="_cancel" class="_cancel _btn">取消</span>`;
         }
-        var popCon ='<div class="_pop">'
-                        +'<div class="_pop-top">'
-                            +'<div class="_pop-title">'+dftOpt.title+'</div>'  
-                            +'<div class="_pop-con">'+dftOpt.content+'</div>'         
-                        +'</div>'
-                        +'<div class="_pop-button">'
-                            +btnHtml
-                        +'</div>'
-                    +'</div>';
+        var popCon =`<div class="_pop">
+                        <div class="_pop-top">
+                            <div class="_pop-title">${dftOpt.title}</div>
+                            <div class="_pop-con">${dftOpt.content}</div>        
+                        </div>
+                        <div class="_pop-button">${btnHtml}</div>
+                    </div>`;
         if($$("popBox")){
             $$("popBox").style.display = "block";
             $$("popBox").className = "_popBox";
@@ -64,15 +51,16 @@ export default (function () {
             div.innerHTML = popCon;
             document.body.appendChild(div);
         }
+        $$("app").className = 'blur';
         window.onhashchange = function(){
             $$("popBox").style.display = 'none';
+            $$("app").className = '';
         };
         bindClick(dftOpt);
     };
     function popHide(event){
         var useable = $$("popBox").getAttribute("useable");
         if(useable === "true"){
-            console.log(useable)
             $$("popBox").setAttribute("useable", false);
             if(event.target.id==="_confirm"){
                 if(typeof(dftOpt.confirm)=="function"){
@@ -87,6 +75,7 @@ export default (function () {
                 return false;
             }
             $$("popBox").className += " hide";
+            $$("app").className = '';
             setTimeout(function(){
                 $$("popBox").style.display = 'none';
                 $$("popBox").setAttribute("useable", true)
@@ -100,6 +89,9 @@ export default (function () {
                 if(event.target.id === "_confirm" || event.target.id === "_cancel"){
                     event.target.style.backgroundColor = opt.activebg;
                     $$("popBox").addEventListener('touchend', popHide);
+                }else{
+                    $$("_confirm").style.backgroundColor = opt.bg;
+                    $$("_cancel").style.backgroundColor = opt.bg;
                 }
             });
             $$("popBox").addEventListener('touchmove', function(event){
@@ -143,8 +135,36 @@ export default (function () {
             timerC = setTimeout(function(){$$("hintBox").style.display = "none";}, 300);
         }, 1000);
     };
+    function loading(){
+        if(timerL){
+            clearTimeout(timerL);
+        }
+        if($$("loadingBox")){
+            $$("loadingBox").style.display = "block";
+            $$("loadingBox").className = "_loadingBox";
+        }else{
+            var div = document.createElement("div");
+            div.setAttribute("id", "loadingBox");
+            div.setAttribute("class", "_loadingBox");
+            div.innerHTML = `<div class="_loading">
+                                <div class="_load"></div>
+                                <p>loading...</p>
+                            </div>`;
+            document.body.appendChild(div);
+        }
+        $$("loadingBox").addEventListener("touchmove",function(event){
+            event.preventDefault();
+        });
+    }
+    function loadingCloss(){
+        $$("loadingBox").className = "_loadingBox hide";
+        timerL = setTimeout(function(){$$("loadingBox").style.display = "none";}, 300);
+    }
+
     return {
-        hint : showHint, //hint方法
-        pop : showPop    //pop方法
+        hint : showHint,    //hint方法
+        pop : showPop,      //pop方法
+        loading:loading,    //loading
+        loadingClose:loadingCloss  //loadingClose
     };
 })();

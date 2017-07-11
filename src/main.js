@@ -4,16 +4,12 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import './common/rem.js'
-import hintPop from "./plugin/hintPop";
+import hintPop from "./plugin/hintPop/index"
+import api from "./common/api"
+console.log(hintPop)
 Vue.prototype.hintPop = hintPop;
-import api from "./config/api";
-console.log("-------------")
-console.log(api);
+Vue.prototype.API = api;
 
-router.beforeEach((to, from, next) => {
-    document.title = to.meta.pageTitle
-    next()
-})
 Vue.config.productionTip = false
 /* eslint-disable no-new */
 new Vue({

@@ -6,7 +6,7 @@ import account from '@/view/account'
 import invite from '@/view/invite'
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
   routes: [
     {
       path: '/',
@@ -30,7 +30,8 @@ export default new Router({
       name: 'account',
       component: account,
       meta:{
-        pageTitle:"我的账户"
+        pageTitle:"我的账户",
+        requireAuth:true
       }
     },
     {
@@ -38,8 +39,31 @@ export default new Router({
       name: 'invite',
       component: invite,
       meta:{
-        pageTitle:"我的邀请"
+        pageTitle:"我的邀请",
+        requireAuth:true
       }
     }
   ]
 })
+
+/*router.beforeEach((to, from, next) => {
+    document.title = to.meta.pageTitle
+    next()
+})*/
+//判断是否需要登录权限 以及是否登录
+router.beforeEach((to, from, next) => {
+  document.title = to.meta.pageTitle
+  if (to.matched.some(res => res.meta.requireAuth)) {// 判断是否需要登录权限
+    if (localStorage.getItem('username') === "true") {// 判断是否登录
+      next()
+    } else {// 没登录则跳转到登录界面
+      next({
+        path: '/hello',
+        query: {unlogin:"你没有登录"}
+      })
+    }
+  } else {
+    next()
+  }
+})
+export default router
