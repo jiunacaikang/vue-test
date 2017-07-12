@@ -8,13 +8,13 @@
     <div class="account-logo">
       <img src="../assets/jn.jpg" height="50" width="50" alt="">
     </div>
-    <form>
+    <div class="form">
       <input type="text" v-model="user.name" placeholder="name">
       <input type="text" v-model="user.age" placeholder="age">
       <input type="text" v-model="user.password" placeholder="password">
       <button @click="submit">提交</button>
       <button @click="reset">重置</button>
-    </form>
+    </div>
   </div>
 </template>
 
@@ -48,7 +48,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
 @import "../style/mixin.scss";
-form{
+.form{
   margin-top:30px;
 }
 input {
