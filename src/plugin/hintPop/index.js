@@ -1,14 +1,14 @@
 import './hintPop.scss'
 import utils from "@/common/utils"
 export default (function () {
-    var dftOpt = {},timer = null,timerC = null,timerL = null,isMoile = utils.isMoile();
-    window.onresize = function(){
-        isMoile = utils.isMoile();
-        bindClick(dftOpt);
-    }
     function $$(id){
         return document.getElementById(id);
     };
+    var dftOpt = {},timer = null,timerC = null,timerL = null,isMoile = utils.isMoile();
+    window.onresize = function(){
+        isMoile = utils.isMoile();
+        $$("popBox")&&bindClick(dftOpt);
+    }
     function showPop(opt){
         dftOpt = {
             title:opt&&opt.title||"操作提示",           //弹框 title
