@@ -42,7 +42,8 @@ ul,ol{list-style:none;}
 .clearfix:after{content:""; display:block; visibility:hidden; height:0; clear:both;}
 .clearfix{zoom:1;}
 .blur{
+    filter: blur(5px);
 	-webkit-filter: blur(5px); /* Chrome, Opera */
-            filter: blur(5px);
+	opacity: (0.9);
 }
 
