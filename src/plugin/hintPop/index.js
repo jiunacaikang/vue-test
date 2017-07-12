@@ -95,6 +95,7 @@ export default (function () {
                 }
             });
             $$("popBox").addEventListener('touchmove', function(event){
+                event.preventDefault();
                 if(event.target.id === "_confirm" || event.target.id === "_cancel"){
                     $$(event.target.id).style.backgroundColor = opt.bg;
                     $$("popBox").removeEventListener("touchend",popHide);
