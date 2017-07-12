@@ -43,10 +43,8 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang='scss'>
 @import '../style/mixin.scss';
-.title{
-  width:3rem;
-  height: 2rem;
-  background: #000;
+.main{
+  margin-top:50px;
 }
 .main-top{
   width:4.2rem;
