@@ -4,6 +4,7 @@
     <div class="ts" @click="showHint">show hint</div>
     <div class="ts" @click="showPop">show pop</div>
     <div class="ts" @click="login">立即登录</div>
+    <img src="../assets/logo.png" height="200" width="200" alt="">
   </div>
 </template>
 
@@ -46,6 +47,9 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scope>
 @import "../style/mixin.scss";
+.hello{
+  margin-top:80px;
+}
 .ts{
   color: $blue;
   border:1px solid $blue;

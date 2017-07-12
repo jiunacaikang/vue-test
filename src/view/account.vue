@@ -5,6 +5,9 @@
       <mt-swipe-item>2</mt-swipe-item>
       <mt-swipe-item>3</mt-swipe-item>
     </mt-swipe>
+    <div class="account-logo">
+      <img src="../assets/jn.jpg" height="50" width="50" alt="">
+    </div>
     <form>
       <input type="text" v-model="user.name" placeholder="name">
       <input type="text" v-model="user.age" placeholder="age">
@@ -59,6 +62,13 @@ button{
   @include wh(2rem,.8rem);
   @include borderRadius(5px);
   background: #ccc;
+}
+.account-logo{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin:10px;
 }
 .mint-swipe{
   height: 200px;
