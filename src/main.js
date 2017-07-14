@@ -7,10 +7,9 @@ import './common/rem.js'
 import hintPop from "./plugin/hintPop/index"
 import api from "./common/api"
 import 'mint-ui/lib/style.css';
-import { Swipe, SwipeItem } from 'mint-ui';
-
-Vue.component(Swipe.name, Swipe);
-Vue.component(SwipeItem.name, SwipeItem);
+//import { Swipe, SwipeItem } from 'mint-ui';
+//Vue.component(Swipe.name, Swipe);
+//Vue.component(SwipeItem.name, SwipeItem);
 
 Vue.prototype.hintPop = hintPop;
 Vue.prototype.API = api;
