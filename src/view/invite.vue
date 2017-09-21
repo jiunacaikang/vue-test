@@ -1,6 +1,7 @@
 <template>
   <div class="wraper">
     {{msg}}
+    <p>load name is:{{name}}</p>
     <div class="toHello">
       <router-link :to="{path:'hello'}">去hello</router-link>
     </div>
@@ -38,16 +39,19 @@ export default {
   },
   name: 'invite',
   mounted () {
-    $http.get('mock/db.json',{"page":1}).then(function(res){
-      console.log(res)
-    }).catch(function(res){
+    let that = this;
+    $http.get('mock/db.json',{"page":1}).then(res => {
+      console.log(res.profile.name)
+      this.name = res.profile.name
+    }).catch(res => {
       console.log("error")
     });
   },
   data () {
     return {
       msg: 'Welcome to Your invite',
-      active:"tab-container3"
+      active:"tab-container3",
+      name:''
     }
   },
   methods:{
