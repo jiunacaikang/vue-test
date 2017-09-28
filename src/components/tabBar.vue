@@ -1,6 +1,6 @@
 <template>
   <div class="nav-bar">
-    <router-link :to="{path:item.link}" v-for="(item,index) in tabData" :key="item.name" @click.native="tab(index)" exact>{{item.name}}
+    <router-link :to="{path:item.link}" v-for="(item,index) in tabData" :key="item.name" @mouseenter.native="tab(index)" @click.native="tab(index)" exact>{{item.name}}
     </router-link>
   </div>
 </template>
@@ -29,6 +29,7 @@ export default {
   },
   methods: {
     tab:function(i){
+      console.log(i)
     }
   }
 }
