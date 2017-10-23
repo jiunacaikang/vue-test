@@ -53,7 +53,7 @@ export default {
 .ts{
   color: $blue;
   border:1px solid $blue;
-  @include wh(30%, .8rem);
+  @include wh(25%, .7rem);
   @include borderRadius(5px);
   @include hb-t($blue);
   @include hb-b($blue);

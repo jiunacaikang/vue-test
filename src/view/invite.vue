@@ -5,7 +5,7 @@
     <div class="toHello">
       <router-link :to="{path:'hello'}">去hello</router-link>
     </div>
-
+  
     <div class="nav">
         <span :class='{"active":active=="tab-container1"}' @click="test('tab-container1')">tab 1</span>
         <span :class='{"active":active=="tab-container2"}' @click="test('tab-container2')">tab 2</span>
@@ -26,6 +26,8 @@
 </template>
 
 <script>
+import test from '@/common/test'
+console.log(test())
 import Vue from 'vue'
 import $http from "@/common/http"
 import {Cell, TabContainer, TabContainerItem } from 'mint-ui';
@@ -33,6 +35,7 @@ import {Cell, TabContainer, TabContainerItem } from 'mint-ui';
 Vue.component(Cell.name, Cell);
 Vue.component(TabContainer.name, TabContainer);
 Vue.component(TabContainerItem.name, TabContainerItem);
+
 export default {
   props:{
     swipeable:true
