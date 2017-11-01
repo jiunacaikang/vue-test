@@ -1,3 +1,3 @@
 export default function test(){
-	alert("000")
+	return 'test data'
 }
