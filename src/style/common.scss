@@ -38,9 +38,14 @@ a{text-decoration:none;font-size: 12px;outline: none;}
 a:visited{text-decoration:none;}
 a:hover{text-decoration:none;}
 ul,ol{list-style:none;}
+.hide{display: none;}
 /* 清除浮动 */
+.fl{float:left}
+.fr{float:right}
 .clearfix:after{content:""; display:block; visibility:hidden; height:0; clear:both;}
 .clearfix{zoom:1;}
+.rel{position: relative;}
+.abs{position: absolute;}
 .blur{
     filter: blur(5px);
 	-webkit-filter: blur(5px); /* Chrome, Opera */
