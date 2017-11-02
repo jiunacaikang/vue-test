@@ -11,17 +11,17 @@ export default (() => {
     }
     function showPop(opt){
         dftOpt = {
-            title:opt&&opt.title||"操作提示",           //弹框 title
-            content:opt&&opt.content||"显示hintPop弹框",//弹框 内容
-            activebg:opt&&opt.activebg||"rgba(225,225,225,0.8)",      //弹框 确定/取消 背景active颜色
-            bg:opt&&opt.bg||"rgba(255,255,255,0.9)",    //弹框 确定/取消 背景颜色
-            use_a:opt&&opt.use_a||false,                //弹框 按钮是否使用a标签
-            url:opt&&opt.url|| "javascript:;",          //弹框 点击确定 链接跳转
-            target:opt&&opt.target||"_self",            //弹框 连接跳转方式
-            confirm:opt&&opt.confirm||function() {       //弹框 点击确认回调函数
+            title:opt&&opt.title||"操作提示",                           //弹框 title
+            content:opt&&opt.content||"显示hintPop弹框",                //弹框 内容
+            activebg:opt&&opt.activebg||"rgba(225,225,225,0.8)",        //弹框 确定/取消 背景active颜色
+            bg:opt&&opt.bg||"rgba(255,255,255,0.9)",                    //弹框 确定/取消 背景颜色
+            use_a:opt&&opt.use_a||false,                                //弹框 按钮是否使用a标签
+            url:opt&&opt.url|| "javascript:;",                          //弹框 点击确定 链接跳转
+            target:opt&&opt.target||"_self",                            //弹框 连接跳转方式
+            confirm:opt&&opt.confirm||function() {                      //弹框 点击确认回调函数
                 showHint("您点击了confirm");
             },
-            cancel:opt&&opt.cancel||function() {         //弹框 点击取消回调函数 
+            cancel:opt&&opt.cancel||function() {                        //弹框 点击取消回调函数 
                 showHint("您点击了cancel");
             }
         };
