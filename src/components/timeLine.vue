@@ -41,50 +41,47 @@ export default {
 <style lang="scss" scope>
 @import "../style/mixin.scss";
 .yearCon{
-  height: 40px;
+  height: 50px;
   width: 30%;
-  .point{
-    width: 10px;
-    height: 10px;
-    background: #f60;
-    right:-5px;
-    border-radius: 50%;
-  }
   .yearValue{
     width: 60px;
-    height: 25px;
+    height: 30px;
     right:20px;
     top:-7px;
-    line-height: 25px;
+    line-height: 30px;
     display: inline-block;
     background: #f60;
     color: #fff;
     border-radius: 5px;
   }
-  .line{
-    width: 6px;
-    height: 100%;
-    background: #ccc;
-    right: -3px;
-    top:0;
-  }
+}
+.line{
+  width: 6px;
+  height: 100%;
+  background: #ccc;
+  right: -3px;
+  top:0;
+}
+.point{
+  width: 10px;
+  height: 10px;
+  background: #f60;
+  right:-5px;
+  border-radius: 50%;
 }
 .monthCon{
   min-height: 30px;
   padding-bottom: 10px;
   width: 70%;
   .point{
-    width: 10px;
-    height: 10px;
     background: #aaa;
     left:-5px;
     top:2px;
-    border-radius: 50%;
   }
   .monthValue{
     width: 50px;
     text-align: right;
-    left: -60px;
+    left: -65px;
     top:0;
   }
   .monthMsg{
@@ -95,11 +92,7 @@ export default {
     box-sizing:border-box;
   }
   .line{
-    width: 6px;
-    height: 100%;
-    background: #ccc;
     left: -3px;
-    top:0;
   }
 }
 .line.last{
