@@ -3,6 +3,7 @@
     <transition name="component-fade" mode="out-in">
       <router-view></router-view>
     </transition>
+    <div class="slot" v-show="!$route.meta.keepAlive"></div>
     <tab-bar v-show="!$route.meta.keepAlive"></tab-bar>
   </div>
 </template>
@@ -57,11 +58,19 @@ export default {
   text-align: center;
   color: #2c3e50;
 }
-.component-fade-enter-active, .component-fade-leave-active {
-  transition: opacity .2s ease-in-out;
+.slot{
+  height: 1.2rem;
 }
-.component-fade-enter, .component-fade-leave-to
-/* .component-fade-leave-active for below version 2.1.8 */ {
+.component-fade-enter-active, .component-fade-leave-active {
+  transition: all .3s ease-in-out;
+  transform: scale(1);
+}
+.component-fade-enter {
+  transform: scale(1);
+  opacity: 0;
+}
+.component-fade-leave-to{
+  transform: scale(.88);
   opacity: 0;
 }
 </style>
