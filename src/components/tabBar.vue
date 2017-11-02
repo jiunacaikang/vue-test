@@ -39,7 +39,7 @@ export default {
 <style scoped lang='scss'>
 @import "../style/mixin.scss";
 .nav-bar{
-  width:7.5rem;
+  width:100%;
   position: fixed;
   bottom: 0;
 }

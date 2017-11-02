@@ -27,7 +27,7 @@ export default {
     timeMsg:Array
   },
   mounted () {
-    console.log(this)
+    console.log(this.timeMsg)
   },
   data () {
     return {
@@ -47,7 +47,7 @@ export default {
     width: 60px;
     height: 30px;
     right:20px;
-    top:-7px;
+    top:-10px;
     line-height: 30px;
     display: inline-block;
     background: #f60;
