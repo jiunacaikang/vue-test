@@ -1,11 +1,11 @@
 import './hintPop.scss'
 import utils from "@/common/utils"
-export default (function () {
+export default (() => {
     function $$(id){
         return document.getElementById(id);
     };
     var dftOpt = {},timer = null,timerC = null,timerL = null,isMoile = utils.isMoile();
-    window.onresize = function(){
+    window.onresize = () => {
         isMoile = utils.isMoile();
         $$("popBox")&&bindClick(dftOpt);
     }
@@ -18,10 +18,10 @@ export default (function () {
             use_a:opt&&opt.use_a||false,                //弹框 按钮是否使用a标签
             url:opt&&opt.url|| "javascript:;",          //弹框 点击确定 链接跳转
             target:opt&&opt.target||"_self",            //弹框 连接跳转方式
-            confirm:opt&&opt.confirm||function(){       //弹框 点击确认回调函数
+            confirm:opt&&opt.confirm||function() {       //弹框 点击确认回调函数
                 showHint("您点击了confirm");
             },
-            cancel:opt&&opt.cancel||function(){         //弹框 点击取消回调函数 
+            cancel:opt&&opt.cancel||function() {         //弹框 点击取消回调函数 
                 showHint("您点击了cancel");
             }
         };
@@ -39,7 +39,7 @@ export default (function () {
                         </div>
                         <div class="_pop-button">${btnHtml}</div>
                     </div>`;
-        if($$("popBox")){
+        if($$("popBox")){//存在就不添加了
             $$("popBox").style.display = "block";
             $$("popBox").className = "_popBox";
             $$("popBox").innerHTML = popCon;
@@ -52,7 +52,7 @@ export default (function () {
             document.body.appendChild(div);
         }
         $$("app").className = 'blur';
-        window.onhashchange = function(){
+        window.onhashchange = () => {//监听hashchange
             $$("popBox").style.display = 'none';
             $$("app").className = '';
         };
@@ -76,7 +76,7 @@ export default (function () {
             }
             $$("popBox").className += " hide";
             $$("app").className = '';
-            setTimeout(function(){
+            setTimeout(() => {
                 $$("popBox").style.display = 'none';
                 $$("popBox").setAttribute("useable", true)
             }, 300);
@@ -85,7 +85,7 @@ export default (function () {
     };
     function bindClick(opt){  
         if(isMoile){
-            $$("popBox").addEventListener('touchstart', function(event){
+            $$("popBox").addEventListener('touchstart', event => {
                 if(event.target.id === "_confirm" || event.target.id === "_cancel"){
                     event.target.style.backgroundColor = opt.activebg;
                     $$("popBox").addEventListener('touchend', popHide);
@@ -94,7 +94,7 @@ export default (function () {
                     $$("_cancel").style.backgroundColor = opt.bg;
                 }
             });
-            $$("popBox").addEventListener('touchmove', function(event){
+            $$("popBox").addEventListener('touchmove', event => {
                 event.preventDefault();
                 if(event.target.id === "_confirm" || event.target.id === "_cancel"){
                     $$(event.target.id).style.backgroundColor = opt.bg;
@@ -103,7 +103,7 @@ export default (function () {
             });
             $$("popBox").addEventListener('touchend', popHide);
         }else{
-            $$("popBox").addEventListener("mousemove",function(event){
+            $$("popBox").addEventListener("mousemove", event => {
                 if(event.target.id === "_confirm" || event.target.id === "_cancel"){
                     $$("_confirm").style.backgroundColor = opt.bg;
                     $$("_cancel").style.backgroundColor = opt.bg;
@@ -131,9 +131,9 @@ export default (function () {
         }
         clearTimeout(timer); clearTimeout(timerC);
         timer = null; timerC = null;
-        timer = setTimeout(function(){//显示1s后消失
+        timer = setTimeout(() => {//显示1s后消失
             $$("hintBox").className = "_hintBox hide";
-            timerC = setTimeout(function(){$$("hintBox").style.display = "none";}, 300);
+            timerC = setTimeout(() => {$$("hintBox").style.display = "none";}, 300);
         }, 1000);
     };
     function loading(){
@@ -153,13 +153,13 @@ export default (function () {
                             </div>`;
             document.body.appendChild(div);
         }
-        $$("loadingBox").addEventListener("touchmove",function(event){
+        $$("loadingBox").addEventListener("touchmove",event => {
             event.preventDefault();
         });
     }
     function loadingCloss(){
         $$("loadingBox").className = "_loadingBox hide";
-        timerL = setTimeout(function(){$$("loadingBox").style.display = "none";}, 300);
+        timerL = setTimeout(() => {$$("loadingBox").style.display = "none";}, 300);
     }
 
     return {
