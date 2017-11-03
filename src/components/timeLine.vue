@@ -1,23 +1,17 @@
-<template>
-  <div class="timeLine">
-    <div v-for="(item,index) in timeMsg" :key="index">
-      <div v-if="item.type==='yy'" class="year clearfix">
-        <div class="yearCon rel fl">
-          <span class="yearValue abs">{{item.value}}</span>
-          <span class="line abs"></span>
-          <i class="point abs"></i>
-        </div>
-      </div>
-      <div v-if="item.type==='mm'" class="month clearfix">
-        <div class="monthCon rel fr">
-          <span class="monthValue abs">{{item.value}}月</span>
-          <span class="monthMsg">{{item.msg}}</span>
-          <span class="line abs" v-bind:class="{'last':timeMsg.length-1 == index}"></span>
-          <i class="point abs"></i>
-        </div>
-      </div>
-    </div>
-  </div>
+<template lang="jade">
+  div.timeLine
+    div(v-for="item,index in timeMsg" v-bind:key="index")
+      div.year.clearfix(v-if="item.type==='yy'")
+        div.yearCon.rel.fl
+          span.yearValue.abs {{item.value}}
+          span.line.abs
+          i.point.abs
+      div.month.clearfix(v-if="item.type==='mm'")
+        div.monthCon.rel.fr
+          span.monthValue.abs {{item.value}}月
+          span.monthMsg {{item.msg}}
+          span.line.abs(v-bind:class="{'last':timeMsg.length-1 == index}")
+          i.point.abs
 </template>
 
 <script>

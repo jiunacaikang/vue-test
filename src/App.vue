@@ -62,7 +62,7 @@ export default {
   height: 1.2rem;
 }
 .component-fade-enter-active, .component-fade-leave-active {
-  transition: all .3s ease-in-out;
+  transition: all .2s ease-in-out;
   transform: scale(1);
 }
 .component-fade-enter {

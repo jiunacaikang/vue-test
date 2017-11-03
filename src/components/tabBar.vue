@@ -1,8 +1,7 @@
-<template>
-  <div class="nav-bar">
+<template lang="jade">
+  div.nav-bar
     <router-link :to="{path:item.link}" v-for="(item,index) in tabData" :key="item.name" @mouseenter.native="tab(index)" @click.native="tab(index)" exact>{{item.name}}
     </router-link>
-  </div>
 </template>
 
 <script>
