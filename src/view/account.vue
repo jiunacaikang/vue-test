@@ -1,6 +1,6 @@
 <template>
   <div>
-    <mt-swipe :auto="4000">
+    <mt-swipe :auto="4000" @change="swiperEnd">
       <mt-swipe-item>1</mt-swipe-item>
       <mt-swipe-item>2</mt-swipe-item>
       <mt-swipe-item>3</mt-swipe-item>
@@ -44,6 +44,9 @@ export default {
     },
     reset () {
       this.user = {};
+    },
+    swiperEnd(index) {
+      console.log(index)
     }
   }
 }

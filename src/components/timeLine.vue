@@ -1,6 +1,6 @@
 <template lang="jade">
-  div.timeLine
-    div(v-for="item,index in timeMsg" v-bind:key="index")
+  ul.timeLine
+    li(v-for="item,index in timeMsg" v-bind:key="index")
       div.year.clearfix(v-if="item.type==='yy'")
         div.yearCon.rel.fl
           span.yearValue.abs {{item.value}}
