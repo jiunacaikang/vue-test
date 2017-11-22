@@ -9,14 +9,16 @@
 </template>
 
 <script>
+import store from './store'
 import tabBar from './components/tabBar'
 export default {
   name: 'app',
+  store,
   components:{tabBar},
   mounted () {
     //console.log(this.$router.params)
     let that = this;
-    that.hintPop.loading();
+    //that.hintPop.loading();
     setTimeout(that.hintPop.loadingClose,2000)
     //that.hintPop.pop({
     //  content:"是否登录？",

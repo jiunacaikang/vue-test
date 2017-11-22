@@ -158,6 +158,7 @@ export default (() => {
         });
     }
     function loadingCloss(){
+        if(!$$("loadingBox")) return false;
         $$("loadingBox").className = "_loadingBox hide";
         timerL = setTimeout(() => {$$("loadingBox").style.display = "none";}, 300);
     }

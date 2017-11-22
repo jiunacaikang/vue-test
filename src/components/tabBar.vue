@@ -28,7 +28,7 @@ export default {
   },
   methods: {
     tab:function(i){
-      console.log(i)
+      //console.log(i)
     }
   }
 }

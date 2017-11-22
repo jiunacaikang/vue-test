@@ -8,6 +8,7 @@
     <div class="account-logo">
       <img src="../assets/jn.jpg" height="50" width="50" alt="">
     </div>
+    <p>vuex-data:{{count}}</p>
     <div class="form">
       <input type="text" v-model="user.name" placeholder="name">
       <input type="text" v-model="user.age" placeholder="age">
@@ -46,7 +47,12 @@ export default {
       this.user = {};
     },
     swiperEnd(index) {
-      console.log(index)
+      //console.log(index)
+    }
+  },
+  computed:{
+    count() {
+      return this.$store.state.count
     }
   }
 }

@@ -26,8 +26,6 @@
 </template>
 
 <script>
-import test from '@/common/test'
-console.log(test())
 import Vue from 'vue'
 import $http from "@/common/http"
 import {Cell, TabContainer, TabContainerItem } from 'mint-ui';
