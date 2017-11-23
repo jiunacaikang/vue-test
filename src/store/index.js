@@ -1,16 +1,18 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import { mapState } from 'vuex';
 
 Vue.use(Vuex);
 
 const store = new Vuex.Store({
     state: {
-        count: 1
+        count: 0
     },
     mutations: {
         increment (state) {
             state.count++
+        },
+        reset (state) {
+            state.count = 0;
         }
     }
 })

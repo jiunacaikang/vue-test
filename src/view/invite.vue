@@ -51,7 +51,7 @@ export default {
   data () {
     return {
       msg: 'Welcome to Your invite',
-      active:"tab-container3",
+      active:"tab-container1",
       name:''
     }
   },

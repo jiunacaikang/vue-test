@@ -8,19 +8,22 @@
     <div class="account-logo">
       <img src="../assets/jn.jpg" height="50" width="50" alt="">
     </div>
-    <p>vuex-data:{{count}}</p>
+    <p>vuex-count:{{count}}</p>
     <div class="form">
       <input type="text" v-model="user.name" placeholder="name">
       <input type="text" v-model="user.age" placeholder="age">
       <input type="text" v-model="user.password" placeholder="password">
-      <button @click="submit">提交</button>
+      <button class='submit' @click="submit">提交</button>
       <button @click="reset">重置</button>
     </div>
+    <button class="changeCount" @click="changeCount()">add-count</button>
+    <button class="reset" @click="changeCount('reset')">reset</button>
   </div>
 </template>
 
 <script>
   import Vue from 'vue'
+  import { mapState } from 'vuex'
   import { Swipe, SwipeItem } from 'mint-ui';
   Vue.component(Swipe.name, Swipe);
   Vue.component(SwipeItem.name, SwipeItem);
@@ -48,13 +51,18 @@ export default {
     },
     swiperEnd(index) {
       //console.log(index)
+    },
+    changeCount (type) {
+      if(type === 'reset') {
+        this.$store.commit('reset');
+      }else{
+        this.$store.commit('increment');
+      }
     }
   },
-  computed:{
-    count() {
-      return this.$store.state.count
-    }
-  }
+  computed: mapState ([
+    'count'
+  ])
 }
 </script>
 
@@ -74,7 +82,21 @@ input {
 button{
   @include wh(2rem,.8rem);
   @include borderRadius(5px);
-  background: #ccc;
+  line-height: 0.8rem;
+  background: #ddd;
+  &.submit{
+    background: #00adff;
+    color:#fff;
+  }
+  &.changeCount{
+    margin-top:5px;
+    @include wh(2.5rem,.8rem);
+    background:red;
+    color:#fff;
+  }
+  &.reset{
+    width: 1.5rem;
+  }
 }
 .account-logo{
   width: 50px;
