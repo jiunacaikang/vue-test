@@ -3,6 +3,8 @@ import Vuex from 'vuex';
 
 Vue.use(Vuex);
 
+import hintPop from '../plugin/hintPop'
+
 const store = new Vuex.Store({
     state: {
         count: 0,
@@ -33,8 +35,10 @@ const store = new Vuex.Store({
     },
     actions: {
         asyncSetCount(context,val){
+            hintPop.loading();
             setTimeout(() => {
                 context.commit('SETVAL',val);
+                hintPop.loadingClose();
             },1000)
         }
     }

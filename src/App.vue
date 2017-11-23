@@ -19,7 +19,7 @@ export default {
     //console.log(this.$router.params)
     let that = this;
     //that.hintPop.loading();
-    setTimeout(that.hintPop.loadingClose,2000)
+    //setTimeout(that.hintPop.loadingClose,2000)
     //that.hintPop.pop({
     //  content:"是否登录？",
     //  confirm:function(){       //弹框 点击确认回调函数
