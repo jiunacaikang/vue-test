@@ -9,6 +9,7 @@
       <img src="../assets/jn.jpg" height="50" width="50" alt="">
     </div>
     <p>vuex-count:{{count}}</p>
+    <div v-for='todo in doneTodos' :key='todo.id'>{{todo.text}}</div>
     <div class="form">
       <input type="text" v-model="user.name" placeholder="name">
       <input type="text" v-model="user.age" placeholder="age">
@@ -16,14 +17,18 @@
       <button class='submit' @click="submit">提交</button>
       <button @click="reset">重置</button>
     </div>
-    <button class="changeCount" @click="changeCount()">add-count</button>
-    <button class="reset" @click="changeCount('reset')">reset</button>
+    <div>
+      <button class="changeCount" @click="changeCount()">add</button>
+      <button class="changeCount change" @click="asyncChangeCount()">change</button>
+      <button class="reset" @click="changeCount('reset')">reset</button>
+    </div>
+    <button class="all" @click="countAll()">count all</button>
   </div>
 </template>
 
 <script>
   import Vue from 'vue'
-  import { mapState } from 'vuex'
+  import { mapState,mapGetters } from 'vuex'
   import { Swipe, SwipeItem } from 'mint-ui';
   Vue.component(Swipe.name, Swipe);
   Vue.component(SwipeItem.name, SwipeItem);
@@ -54,15 +59,31 @@ export default {
     },
     changeCount (type) {
       if(type === 'reset') {
-        this.$store.commit('reset');
+        this.$store.commit('RESET');
       }else{
-        this.$store.commit('increment');
+        this.$store.commit('INCREMENT');
       }
+    },
+    asyncChangeCount () {
+      let val = Math.floor(Math.random() * 50);
+      this.$store.dispatch('asyncSetCount',val);
+    },
+    countAll () {
+      let data = {
+        count:8,
+        num:5
+      }
+      this.$store.commit('COUNTALL',data)
     }
   },
-  computed: mapState ([
-    'count'
-  ])
+  computed: {
+    ...mapState ([
+      'count'
+    ]),
+    ...mapGetters([
+      'doneTodos'
+    ])
+  }
 }
 </script>
 
@@ -77,11 +98,12 @@ input {
   @include borderRadius(5px);
   display: block;
   padding-left:5px;
-  margin:5px auto;
+  margin:5px auto 0;
 }
 button{
   @include wh(2rem,.8rem);
   @include borderRadius(5px);
+  margin-top:5px;
   line-height: 0.8rem;
   background: #ddd;
   &.submit{
@@ -89,13 +111,20 @@ button{
     color:#fff;
   }
   &.changeCount{
-    margin-top:5px;
-    @include wh(2.5rem,.8rem);
+    @include wh(1.3rem,.8rem);
     background:red;
     color:#fff;
   }
   &.reset{
-    width: 1.5rem;
+    width: 1.3rem;
+  }
+  &.change{
+    background: #00adff;
+  }
+  &.all{
+    width: 4.1rem;
+    background: #00adff;
+    color:#fff;
   }
 }
 .account-logo{

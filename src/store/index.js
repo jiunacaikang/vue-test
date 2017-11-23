@@ -5,14 +5,37 @@ Vue.use(Vuex);
 
 const store = new Vuex.Store({
     state: {
-        count: 0
+        count: 0,
+        todos: [
+            { id: 1, text: 'aaa', done: true },
+            { id: 2, text: 'bbb', done: false },
+            { id: 3, text: 'ccc', done: false }
+          ]
     },
     mutations: {
-        increment (state) {
+        INCREMENT (state) {
             state.count++
         },
-        reset (state) {
+        SETVAL (state,val) {
+            state.count = val;
+        },
+        RESET (state) {
             state.count = 0;
+        },
+        COUNTALL (state,payload) {
+            state.count += payload.num * payload.count;
+        }
+    },
+    getters: {
+        doneTodos:state => {
+            return state.todos.filter(todo => todo.done)
+        }
+    },
+    actions: {
+        asyncSetCount(context,val){
+            setTimeout(() => {
+                context.commit('SETVAL',val);
+            },1000)
         }
     }
 })
