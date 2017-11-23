@@ -9,11 +9,9 @@
 </template>
 
 <script>
-import store from './store'
 import tabBar from './components/tabBar'
 export default {
   name: 'app',
-  store,
   components:{tabBar},
   mounted () {
     //console.log(this.$router.params)
