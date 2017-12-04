@@ -8,7 +8,7 @@
               <a href="javascript:;" class="detail redC">查看详情</a>
           </div>
       </div>
-      <p class="total">已有<i class="redC">1820</i>位投资人投资葫芦宝<br><span>到期一次性还本付息</span></p> 
+      <p class="total">已有<i class="redC">1850</i>位投资人投资葫芦宝<br><span>到期一次性还本付息</span></p> 
       <div class="buy">
         <ul>
           <li>投资期限<i class="redC">30天</i></li>
