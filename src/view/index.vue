@@ -15,7 +15,7 @@
           <li>起投金额<i class="redC">100元</i></li>
           <li>计息<i class="redC">T+1</i></li>
         </ul>
-        <a @click="invite" class="main-button">立即投资</a>
+        <a @click="invite" class="main-button">立即投资test</a>
         <p class="protect">账户资金安全由新浪支付和永安保险保障</p>
       </div> 
     </div>
