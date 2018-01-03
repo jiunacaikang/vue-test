@@ -28,6 +28,7 @@
 
 <script>
   import Vue from 'vue'
+  import $http from "@/common/http"
   import { mapState,mapGetters } from 'vuex'
   import { Swipe, SwipeItem } from 'mint-ui';
   Vue.component(Swipe.name, Swipe);
@@ -35,11 +36,11 @@
 export default {
   name: 'index',
   mounted () {
-    /*this.user = {
+    this.user = {
       name:"xxx",
       age:18,
       password:"yyyyy"
-    }*/
+    }
   },
   data () {
     return {
@@ -49,7 +50,23 @@ export default {
   },
   methods:{
     submit () {
+      if(!this.user.name || !this.user.age || !this.user.password){
+        this.hintPop.hint("请填写完整信息");
+      }else{
+        let that = this;
+        let params = {
+          name : this.user.name,
+          age : this.user.age,
+          password : this.user.password,
+        }
 
+        $http.get('/api/addUser', {
+          params
+        }).then(res => {
+          this.hintPop.hint(res.msg);
+          this.reset();
+        });
+      }
     },
     reset () {
       this.user = {};

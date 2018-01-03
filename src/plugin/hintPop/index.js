@@ -134,7 +134,7 @@ export default (() => {
         timer = setTimeout(() => {//显示1s后消失
             $$("hintBox").className = "_hintBox hide";
             timerC = setTimeout(() => {$$("hintBox").style.display = "none";}, 300);
-        }, 1000);
+        }, 2000);
     };
     function loading(){
         if(timerL){

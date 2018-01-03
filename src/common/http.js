@@ -6,7 +6,7 @@ axios.defaults.timeout = 5000
     // http请求拦截器
 axios.interceptors.request.use(request => {
         hintPop.loading();
-        console.log("loaging...")
+        console.log("loading...")
         return request
     }, error => {
         hintPop.loadingClose();
