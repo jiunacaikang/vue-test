@@ -19,10 +19,10 @@ export default (() => {
             url:opt&&opt.url|| "javascript:;",                          //弹框 点击确定 链接跳转
             target:opt&&opt.target||"_self",                            //弹框 连接跳转方式
             confirm:opt&&opt.confirm||function() {                      //弹框 点击确认回调函数
-                showHint("您点击了confirm");
+                //showHint("您点击了confirm");
             },
             cancel:opt&&opt.cancel||function() {                        //弹框 点击取消回调函数 
-                showHint("您点击了cancel");
+                //showHint("您点击了cancel");
             }
         };
         var btnHtml = '';

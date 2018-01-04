@@ -4,6 +4,8 @@ import Hello from '@/components/Hello'
 import index from '@/view/index'
 import account from '@/view/account'
 import invite from '@/view/invite'
+import register from '@/view/register'
+import login from '@/view/login'
 Vue.use(Router)
 
 const router = new Router({
@@ -14,8 +16,7 @@ const router = new Router({
             meta: {
                 pageTitle: "立即抢购"
             }
-        },
-        {
+        },{
             path: '/hello',
             name: 'hello',
             component: Hello,
@@ -23,8 +24,7 @@ const router = new Router({
                 pageTitle: "hello",
                 keepAlive: true
             }
-        },
-        {
+        },{
             path: '/account',
             name: 'account',
             component: account,
@@ -32,14 +32,29 @@ const router = new Router({
                 pageTitle: "我的账户",
                 requireAuth: true
             }
-        },
-        {
+        },{
             path: '/invite',
             name: 'invite',
             component: invite,
             meta: {
                 pageTitle: "我的邀请",
                 requireAuth: true
+            }
+        },{
+            path: '/register',
+            name: 'register',
+            component: register,
+            meta: {
+                pageTitle: "注册",
+                keepAlive: true
+            }
+        },{
+            path: '/login',
+            name: 'login',
+            component: login,
+            meta: {
+                pageTitle: "登录",
+                keepAlive: true
             }
         }
     ]
@@ -53,12 +68,13 @@ const router = new Router({
 router.beforeEach((to, from, next) => {
 
     document.title = to.meta.pageTitle
+    console.log(sessionStorage.getItem('islogin'))
     if (to.matched.some(res => res.meta.requireAuth)) { // 判断是否需要登录权限
-        if (localStorage.getItem('username') === "true") { // 判断是否登录
+        if (sessionStorage.getItem('islogin') === "true") { // 判断是否登录
             next()
         } else { // 没登录则跳转到登录界面
             next({
-                path: '/hello',
+                path: '/login',
                 query: { unlogin: "你没有登录" }
             })
         }
