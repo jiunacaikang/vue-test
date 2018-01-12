@@ -29,7 +29,7 @@
 <script>
   import Vue from 'vue'
   import $http from "@/common/http"
-  import { mapState,mapGetters } from 'vuex'
+  import { mapState,mapGetters,mapMutations } from 'vuex'
   import { Swipe, SwipeItem } from 'mint-ui';
   Vue.component(Swipe.name, Swipe);
   Vue.component(SwipeItem.name, SwipeItem);
@@ -76,9 +76,9 @@ export default {
     },
     changeCount (type) {
       if(type === 'reset') {
-        this.$store.commit('RESET');
+        this.RESET();
       }else{
-        this.$store.commit('INCREMENT');
+        this.INCREMENT();
       }
     },
     asyncChangeCount () {
@@ -91,15 +91,23 @@ export default {
         num:5
       }
       this.$store.commit('COUNTALL',data)
-    }
+    },
+    ...mapMutations([
+      'INCREMENT',
+      'RESET'
+    ])
   },
   computed: {
-    ...mapState ([
+    ...mapState([
       'count'
     ]),
     ...mapGetters([
       'doneTodos'
-    ])
+    ]),
+    /* ...mapMutations([
+      'INCREMENT',
+      'SETVAL'
+    ]) */
   }
 }
 </script>

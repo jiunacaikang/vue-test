@@ -7,7 +7,7 @@ import hintPop from '../plugin/hintPop'
 
 const store = new Vuex.Store({
     state: {
-        count: 0,
+        count: 180,
         todos: [
             { id: 1, text: 'aaa', done: true },
             { id: 2, text: 'bbb', done: false },
@@ -34,7 +34,7 @@ const store = new Vuex.Store({
         }
     },
     actions: {
-        asyncSetCount(context,val){
+        asyncSetCount(context,val) {
             hintPop.loading();
             setTimeout(() => {
                 context.commit('SETVAL',val);
