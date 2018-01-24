@@ -121,8 +121,8 @@
     border-radius: 10px;
     animation: pop 0.3s;
     -webkit-animation: pop 0.3s;
-    transform:translate3D(0,0,0);
-    -webkit-transform:translate3D(0,0,0);
+    transform:translateZ(0);
+    -webkit-transform:translateZ(0);
 }
 @keyframes pop {
     0% {

@@ -70,7 +70,7 @@ router.beforeEach((to, from, next) => {
     document.title = to.meta.pageTitle
     console.log(sessionStorage.getItem('islogin'))
     if (to.matched.some(res => res.meta.requireAuth)) { // 判断是否需要登录权限
-        if (sessionStorage.getItem('islogin') === "true") { // 判断是否登录
+        if (sessionStorage.getItem('islogin') !== "true") { // 判断是否登录
             next()
         } else { // 没登录则跳转到登录界面
             next({

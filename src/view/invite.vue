@@ -42,7 +42,7 @@ export default {
   mounted () {
     let that = this;
     $http.get('mock/db.json',{"page":1}).then(res => {
-      console.log(res.profile.name)
+      console.log(this === that)
       this.name = res.profile.name
     }).catch(res => {
       console.log("error")
