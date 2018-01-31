@@ -78,7 +78,8 @@ export default {
       if(type === 'reset') {
         this.RESET();
       }else{
-        this.INCREMENT();
+        //this.INCREMENT();
+        this.$store.state.count += 2;
       }
     },
     asyncChangeCount () {

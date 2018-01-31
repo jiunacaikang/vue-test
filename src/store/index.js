@@ -41,6 +41,8 @@ const store = new Vuex.Store({
                 hintPop.loadingClose();
             },1000)
         }
-    }
+    },
+    strict:true
 })
+console.log(store);
 export default store;
