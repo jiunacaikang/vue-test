@@ -33,6 +33,14 @@ const router = new Router({
                 requireAuth: true
             }
         },{
+            path: '/account/:id',
+            name: 'account',
+            component: account,
+            meta: {
+                pageTitle: "我的账户",
+                requireAuth: true
+            }
+        },{
             path: '/invite',
             name: 'invite',
             component: invite,
@@ -55,6 +63,13 @@ const router = new Router({
             meta: {
                 pageTitle: "登录",
                 keepAlive: true
+            }
+        },{
+            path: '*',
+            redirect: '/',
+            component: index,
+            meta: {
+                pageTitle: "立即抢购"
             }
         }
     ]

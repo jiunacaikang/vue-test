@@ -23,6 +23,7 @@
       <button class="reset" @click="changeCount('reset')">reset</button>
     </div>
     <button class="all" @click="countAll()">count all</button>
+    <div>{{ $route.params.id }}</div>
   </div>
 </template>
 

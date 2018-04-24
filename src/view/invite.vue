@@ -5,6 +5,8 @@
     <div class="toHello">
       <router-link :to="{path:'hello'}">去hello</router-link>
     </div>
+
+    <router-link to="account/main">account/main</router-link>
   
     <div class="nav">
         <span :class='{"active":active=="tab-container1"}' @click="test('tab-container1')">tab 1</span>

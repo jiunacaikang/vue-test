@@ -18,11 +18,11 @@ export default {
         link:"/"
       },{
         name:"我的账户",
-        link:"account",
+        link:"/account",
         hideTab:true
       },{
         name:"我的邀请",
-        link:"invite"
+        link:"/invite"
       }]
     }
   },

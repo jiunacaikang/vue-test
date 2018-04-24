@@ -10,7 +10,7 @@ axios.interceptors.request.use(request => {
         return request
     }, error => {
         hintPop.loadingClose();
-        console.log("loaging closed")
+        console.log("loading closed")
         console.error("统一请求错误处理")
         hintPop.hint("加载超时");
         return Promise.reject(error)
