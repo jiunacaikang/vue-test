@@ -11,9 +11,6 @@ npm install
 # serve with hot reload at localhost:8081
 npm run dev
 
-# build for testing with minification
-npm run test
-
 # build for production with minification
 npm run build
 
